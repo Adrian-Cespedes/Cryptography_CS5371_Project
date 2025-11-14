@@ -1,10 +1,5 @@
 """Data providers for the password manager TUI.
 
-The provider protocol allows the UI to remain agnostic of the concrete
-storage implementation. For the first delivery we ship an in-memory
-provider populated with sample data so the interface can be explored
-without a backend. A real backend can later implement the same protocol
-and be injected into the app at startup.
 """
 
 from __future__ import annotations

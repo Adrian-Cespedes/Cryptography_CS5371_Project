@@ -1,7 +1,4 @@
-"""Data models used by the Textual TUI.
-
-These are intentionally lightweight so they can be shared by a future
-backend implementation without major changes.
+"""Data models used by the Textual TUI
 """
 
 from __future__ import annotations
