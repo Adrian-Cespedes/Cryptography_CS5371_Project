@@ -362,8 +362,6 @@ Lo que no se cubre totalmente (limitaciones):
 
 - **Hardcoded peppers para auth**: Para auth de backend se usa un `auth_pepper` hardcoded. En un sistema real este valor debería gestionarse como secret externo (por ejemplo, variable de entorno o secret manager) y no como literal en el código fuente.
 
-- **Static analysis / linting**: No hay integración visible de herramientas de análisis estático (`mypy`, `ruff`, `bandit`). Desde ciberseguridad, añadir `bandit` o herramientas similares ayudaría a detectar patrones inseguros de forma temprana.
-
 - **UI/UX de recuperación**: Existe la lógica para manejar seed phrase del pepper en `PepperManager`, pero no se observa un flujo de UI completo y robusto para recuperación. En un Password Manager real, esta parte es crítica para no forzar a los usuarios a adoptar prácticas inseguras de backup.
 
 En conjunto, el núcleo criptográfico y la arquitectura zero-knowledge centrada en el servidor separado están alineados con buenas prácticas de ciberseguridad para un proyecto académico. Las principales brechas están en la ausencia de TLS, en la gestión de secrets (peppers y JWT secret) y en la falta de mecanismos más avanzados de gestión de keys y de hardening del endpoint del usuario.
