@@ -385,7 +385,7 @@ flowchart TD
         SEED2 --> SEED4
     end
 
-    subgraph "Key Derivation (Every Encrypt/Decrypt)"
+    subgraph "Key Derivation"
         A["👤 Master Password"]
         B["🧂 Salt<br/>(16 bytes, from blob or new)"]
         C["🌶️ Pepper<br/>(32 bytes, from local file)"]
@@ -435,7 +435,7 @@ flowchart TD
         V4 --> BLOB
     end
 
-    subgraph "☁️ Server (Zero-Knowledge)"
+    subgraph "☁️ Server"
         SRV1["📤 Upload Blob<br/>(with JWT auth)"]
         SRV2["💾 SQLite<br/>(stores blob only)"]
         SRV3["📥 Download Blob"]
@@ -457,7 +457,7 @@ flowchart TD
         BK3 --> BLOB
     end
 
-    subgraph "🔄 Modification Flow (Forward Secrecy)"
+    subgraph "🔄 Modification Flow"
         MOD1["✏️ User Edits Vault"]
         MOD2["🎲 Generate NEW Salt"]
         MOD3["♻️ Re-derive Master Key"]
