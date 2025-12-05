@@ -20,6 +20,7 @@
   - [7.3 Data Flow Summary](#73-data-flow-summary)
   - [7.4 Pepper (Recovery Seed) System](#74-pepper-recovery-seed-system)
   - [7.5 Security Properties](#75-security-properties)
+  - [7.6 Code Audit Results](#76-code-audit-results)
 
 ## 1. Descripción del Sistema y Arquitectura
 
@@ -587,4 +588,8 @@ The pepper is a **user-specific recovery seed** similar to cryptocurrency wallet
 
 #### Bandit:
 
+![imgs/bandit.png](https://github.com/Adrian-Cespedes/Cryptography_CS5371_Project/blob/main/imgs/bandit.png)
+
 #### Semgrep:
+
+![imgs/semgrep.png](https://github.com/Adrian-Cespedes/Cryptography_CS5371_Project/blob/main/imgs/semgrep.png)
