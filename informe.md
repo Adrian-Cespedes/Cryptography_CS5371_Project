@@ -1,5 +1,26 @@
 # Informe Técnico - Proton Vault
 
+- [1. Descripción del Sistema y Arquitectura](#1-descripción-del-sistema-y-arquitectura)
+- [2. Implementación Criptográfica (Core)](#2-implementación-criptográfica-core)
+  - [2.1 Encryption con AES-256-GCM](#21-encryption-con-aes-256-gcm)
+  - [2.2 KDF con Argon2id](#22-kdf-con-argon2id)
+  - [2.3 Randomness (CSPRNG)](#23-randomness-csprng)
+- [3. Justificación de Algoritmos, Librerías y Arquitectura desde Ciberseguridad](#3-justificación-de-algoritmos-librerías-y-arquitectura-desde-ciberseguridad)
+- [4. Diagrama de Flujo de Datos (Texto descriptivo)](#4-diagrama-de-flujo-de-datos-texto-descriptivo)
+- [5. Seguridad Práctica y Amenazas](#5-seguridad-práctica-y-amenazas)
+  - [5.1 Data at Rest](#51-data-at-rest)
+  - [5.2 Data in Transit](#52-data-in-transit)
+  - [5.3 Amenazas Mitigadas](#53-amenazas-mitigadas)
+- [6. Resultados y Limitaciones](#6-resultados-y-limitaciones)
+  - [6.1 Qué funciona bien](#61-qué-funciona-bien)
+  - [6.2 Qué falta o podría mejorar](#62-qué-falta-o-podría-mejorar)
+- [7. Anexos](#7-anexos)
+  - [7.1 Overview Diagram](#71-overview-diagram)
+  - [7.2 Cryptographic Specifications](#72-cryptographic-specifications)
+  - [7.3 Data Flow Summary](#73-data-flow-summary)
+  - [7.4 Pepper (Recovery Seed) System](#74-pepper-recovery-seed-system)
+  - [7.5 Security Properties](#75-security-properties)
+
 ## 1. Descripción del Sistema y Arquitectura
 
 Proton Vault es un Password Manager con enfoque zero-knowledge. El objetivo es que todo el contenido del vault (credenciales, passwords, notas) esté siempre en formato encrypted y que solo el cliente que conoce el master password pueda hacer decryption.
@@ -561,3 +582,9 @@ The pepper is a **user-specific recovery seed** similar to cryptocurrency wallet
 5. **Two-Factor Encryption**: Requires both Master Password AND Pepper to decrypt
 6. **Local Backup**: Users can restore data even if server is compromised or unavailable
 7. **Key Separation**: Server auth password is separate from vault encryption password
+
+### 7.6 Code Audit Results
+
+#### Bandit:
+
+#### Semgrep:
