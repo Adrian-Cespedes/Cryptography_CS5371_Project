@@ -15,7 +15,7 @@ Este diseño busca que un compromiso del servidor (backend + database) no impliq
 
 El flujo de datos es:
 
-1. El usuario interactúa con el TUI/GUI de PySide6 (`frontend/main.py`, `screens/auth_screen.py`, `screens/dashboard_screen.py`).
+1. El usuario interactúa con el Frontend de PySide6 (`frontend/main.py`, `screens/auth_screen.py`, `screens/dashboard_screen.py`). Utiliza su usuario y contraseña para autenticarse, y usa la **contraseña maestra** para acceder a la bóveda. **No se puede recuperar esto si se olvida**.
 2. El frontend deriva la master key, genera o usa el vault key y realiza encryption/decryption local usando `shared.crypto.CryptoManager` y los modelos `Vault` y `EncryptedBlob` de `shared.models`.
 3. El resultado es un JSON blob encrypted (`EncryptedBlob.to_json()`), que viaja como string dentro de un JSON payload al backend por HTTP usando el API client.
 4. El backend recibe ese blob en el endpoint `/vault` (`backend.main.update_vault`), y lo guarda literalmente como `Text` en la columna `encrypted_blob` de la tabla `users` en SQLite (`backend.database.User`). El backend nunca ve plaintext.
@@ -362,6 +362,6 @@ Lo que no se cubre totalmente (limitaciones):
 
 - **Hardcoded peppers para auth**: Para auth de backend se usa un `auth_pepper` hardcoded. En un sistema real este valor debería gestionarse como secret externo (por ejemplo, variable de entorno o secret manager) y no como literal en el código fuente.
 
-- **UI/UX de recuperación**: Existe la lógica para manejar seed phrase del pepper en `PepperManager`, pero no se observa un flujo de UI completo y robusto para recuperación. En un Password Manager real, esta parte es crítica para no forzar a los usuarios a adoptar prácticas inseguras de backup.
+- **Device Binding y 2FA**: Para permitir acceder a las contraseñas únicamente de dispositivos en los que se confía, añadiendo una barrera de seguridad física.
 
 En conjunto, el núcleo criptográfico y la arquitectura zero-knowledge centrada en el servidor separado están alineados con buenas prácticas de ciberseguridad para un proyecto académico. Las principales brechas están en la ausencia de TLS, en la gestión de secrets (peppers y JWT secret) y en la falta de mecanismos más avanzados de gestión de keys y de hardening del endpoint del usuario.
