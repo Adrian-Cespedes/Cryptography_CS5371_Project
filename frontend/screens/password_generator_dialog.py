@@ -140,7 +140,7 @@ class PasswordGeneratorDialog(QDialog):
         self.length_spin.setMinimum(8)
         self.length_spin.setMaximum(64)
         self.length_spin.setValue(16)
-        self.length_spin.setFixedWidth(60)
+        self.length_spin.setFixedWidth(80)
         self.length_spin.valueChanged.connect(self._on_spin_changed)
         length_layout.addWidget(self.length_spin)
         

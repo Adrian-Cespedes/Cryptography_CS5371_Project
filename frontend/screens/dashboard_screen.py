@@ -63,7 +63,7 @@ class ItemWidget(QFrame):
         
         # Icon placeholder (first letter)
         icon = QLabel(self.item.title[0].upper() if self.item.title else "?")
-        icon.setFixedSize(36, 36)
+        icon.setFixedSize(40, 40)
         icon.setAlignment(Qt.AlignmentFlag.AlignCenter)
         icon.setStyleSheet(f"""
             background-color: {COLORS['primary']};
